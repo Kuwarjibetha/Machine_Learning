@@ -64,8 +64,47 @@ This application analyzes metadata from the TMDB 5000 dataset to generate accura
 
 
 ---
+# ⚙️ Installation & Setup
 
-## ⚙️ Getting Started
+## 1. Install Dependencies
+   Run the following command to install all required Python packages:
+   pip install -r requirements.txt
 
-### 1. Clone the repository 
+## 2. Launch the Application
+   Start the Streamlit app using:
+   streamlit run app.py
+
+   Note: If you're working with the notebook version, open Untitled1.ipynb in Jupyter Notebook or convert it to a Python script for       production use.
+
+## 📊 Dataset
+   Source: TMDB 5000 Movie Dataset
+
+## Files Used:
+   tmdb_5000_movies.csv
+   tmdb_5000_credits.csv
+
+## 🧠 Recommendation Logic
+
+The recommendation engine follows these steps:
+
+Data Preprocessing: Load and merge movie and credit metadata.
+
+Feature Extraction: Collect keywords, genres, cast, and director details.
+
+Text Vectorization: Convert combined metadata into numeric vectors.
+
+Similarity Calculation: Compute cosine similarity across all movie vectors.
+
+Recommendation Output: Display the top similar movies to the user.
+
+## ✅ Future Enhancements
+
+🎞️ Integrate live poster and metadata using the TMDB API.
+
+📧 Store feedback securely in Google Sheets, Firebase, or a SQL database.
+
+🧪 Enhance recommendation accuracy with advanced NLP models (e.g., TF-IDF, BERT).
+
+🌐 Deploy on platforms like Streamlit Cloud or Hugging Face Spaces for global access.
+
 

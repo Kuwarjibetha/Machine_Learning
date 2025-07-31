@@ -1,5 +1,5 @@
 # 🎬 Movie Recommendation System with Feedback Integration
-<img width="1710" height="1107" alt="Screenshot 2025-07-31 at 11 58 55 AM" src="https://github.com/user-attachments/assets/98d04de2-d162-4a62-bfe8-92c861a4e27a" />
+<img width="1710" height="928" alt="Screenshot 2025-07-31 at 12 11 44 PM" src="https://github.com/user-attachments/assets/af6bcd28-e5c8-4f51-9dde-f0b506e55850" />
 
 An AI-powered, content-based movie recommendation application developed using Python and Streamlit. This system enables users to receive personalized movie suggestions and submit feedback via an intuitive web interface.
 
@@ -24,3 +24,48 @@ This application analyzes metadata from the TMDB 5000 dataset to generate accura
 - Saves responses to an Excel file (`feedback.xlsx`) for future analysis.
 
 ---
+### 🎥 Movie Recommender Interface
+<img width="1708" height="451" alt="Screenshot 2025-07-31 at 12 13 26 PM" src="https://github.com/user-attachments/assets/2a3d5dcb-4811-40b4-ba4f-0a19343e10fe" />
+
+### 🎥  Movie Recommendation 
+<img width="635" height="877" alt="Screenshot 2025-07-31 at 12 18 00 PM" src="https://github.com/user-attachments/assets/3048e34c-2bbe-478d-8888-d85e2d6c11ad" />
+
+### ✍️ Feedback Form (Successful Submission)
+<img width="1706" height="940" alt="Screenshot 2025-07-31 at 12 00 55 PM" src="https://github.com/user-attachments/assets/dc32dc6a-8d9e-46c9-a04c-68d91cc3a828" />
+
+
+
+
+---
+
+## 🛠️ Tech Stack
+
+- **Language**: Python 3.9+
+- **Web Framework**: [Streamlit](https://streamlit.io/)
+- **Data Handling**: `pandas`, `numpy`, `openpyxl`
+- **Modeling**: Cosine similarity (via `scikit-learn`)
+- **Persistence**: `pickle` for model objects, `.xlsx` for feedback data
+
+---                                                                                                                                            
+
+
+
+├── app.py / Untitled1.ipynb # Main application logic
+├── feedback.xlsx # Collected user feedback
+├── movies.pkl # Processed movie metadata
+├── movie_dict.pkl # Dictionary of movie titles and IDs
+├── similarity.pkl # Precomputed similarity matrix
+├── tmdb_5000_movies.csv # Raw movie metadata
+├── tmdb_5000_credits.csv # Raw cast/crew metadata
+├── requirements.txt # Python package dependencies
+├── README.md # Project documentation
+└── screenshots/ # UI preview images
+
+
+
+---
+
+## ⚙️ Getting Started
+
+### 1. Clone the repository 
+

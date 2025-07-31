@@ -1,4 +1,5 @@
 # 🎬 Movie Recommendation System with Feedback Integration
+<img width="1710" height="1107" alt="Screenshot 2025-07-31 at 11 58 55 AM" src="https://github.com/user-attachments/assets/98d04de2-d162-4a62-bfe8-92c861a4e27a" />
 
 An AI-powered, content-based movie recommendation application developed using Python and Streamlit. This system enables users to receive personalized movie suggestions and submit feedback via an intuitive web interface.
 

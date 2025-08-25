@@ -1,23 +1,62 @@
 import streamlit as st
-import joblib
+import pickle
+from google import genai
+from google.genai import types
 
 
-# Load model + feature names
-rf, features = joblib.load("model.pkl")
+# Load trained model + features
 
-st.title("🩺 Medical Disease Prediction App")
-st.write("Select your symptoms below and get the predicted disease.")
+model_data = pickle.load(open("model.pkl", "rb"))
+rf = model_data["model"]
+symptoms = model_data["features"]
 
-st.subheader("👉 Select Symptoms")
 
-# Collect inputs for all 132 symptoms
-inputs = []
-for symptom in features:
-    # Checkbox (1 if checked, else 0)
-    val = st.checkbox(symptom.replace("_", " "))
-    inputs.append(1 if val else 0)
+# Gemini API setup
 
-# Predict button
-if st.button("Predict Disease"):
-    prediction = rf.predict([inputs])[0]
-    st.success(f"✅ Predicted Disease: **{prediction}**")
+GEMINI_API_KEY = "////////////////////////////"
+
+def execute_gemini(prompt):
+    client = genai.Client(api_key=GEMINI_API_KEY)
+    model = "gemini-2.5-flash-lite"
+
+    contents = [
+        types.Content(
+            role="user",
+            parts=[types.Part.from_text(text=prompt)],
+        ),
+    ]
+    result = client.models.generate_content(
+        model=model,
+        contents=contents,
+    )
+    return result.text
+
+
+# Streamlit UI
+
+st.title("🩺 Disease Prediction App")
+st.write("✅ Select the symptoms you are experiencing:")
+
+user_input = []
+for col in symptoms:
+    val = st.checkbox(col.replace("_", " "))
+    user_input.append(1 if val else 0)
+
+if st.button("Predict"):
+    final_predict = rf.predict([user_input])[0]
+    st.success(f"🎯 Predicted Disease: **{final_predict}**")
+
+    # Ask Gemini for details
+    prompt = f"""
+    Disease: {final_predict}
+    Write a guide with (precaution, specialist, hospital required, diet recommendation, 
+    exercise recommendation, medicine, others).
+    Write separately in English and Hindi.
+    Use very short main points only.
+    """
+
+    with st.spinner("🧠 Generating guidance ..."):
+        gemini_response = execute_gemini(prompt)
+
+    st.subheader("📘 Guidance (English & Hindi)")
+    st.write(gemini_response)

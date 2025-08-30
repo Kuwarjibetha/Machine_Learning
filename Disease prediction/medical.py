@@ -13,7 +13,7 @@ symptoms = model_data["features"]
 
 # Gemini API setup
 
-GEMINI_API_KEY = "AIzaSyBQQx2y-82Rdc_8thBSzP-D7Xhrs1K3PTI"
+GEMINI_API_KEY = "Enter you api Key"
 
 def execute_gemini(prompt):
     client = genai.Client(api_key=GEMINI_API_KEY)
